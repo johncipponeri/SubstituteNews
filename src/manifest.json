@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+
+	"name": "Fun News",
+	"description": "This extension substitutes common terms in news articles to more humorous substitutions.",
+	"version": "1.0",
+
+	"permissions": [
+		"tabs", "<all_urls>"
+	],
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "file://*/*"],
+			"js": ["content.js"]
+		}
+	]
+}
