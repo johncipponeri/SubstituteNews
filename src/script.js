@@ -15,12 +15,16 @@ var substitutions = [
 	"could not be reached for comment", "is guilty and everyone knows it"
 ];
 
-var lines = document.body.innerHTML.split('\n');
+var lines = document.body.textContent.split('\n');
 
 for(var l = 0; l < lines.length; l += 1) {
-	for(var s = 0; s < substitutions.length; s += 2) {
-		lines[l] = lines[l].toLowerCase().replace(new RegExp(substitutions[s], 'g'), substitutions[s + 1]);	
-	}
+	var words = lines[l].split(/\s+/);
+
+	for(var w = 0; w < words.length; w += 1) {
+		for(var s = 0; s < substitutions.length; s += 2) {
+			words[w] = words[w].toLowerCase().replace(new RegExp(substitutions[s], 'g'), substitutions[s + 1]);	
+		}
+	} lines[l] = words.join(" ");
 }
 
-document.body.innerHTML = lines.join('\n');
+document.body.textContent = lines.join('\n');
